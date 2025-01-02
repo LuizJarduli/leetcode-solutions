@@ -1,0 +1,18 @@
+{
+  "name": "leetcode-solutions",
+  "version": "1.0.0",
+  "private": true,
+  "description": "This repository contains my solutions to various problems from [LeetCode](https://leetcode.com/). Each solution is organized by category and includes detailed explanations, complexity analysis, and implementations in multiple programming languages.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Luiz Jarduli",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^22.10.4",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}
