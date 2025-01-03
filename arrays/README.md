@@ -8,3 +8,4 @@ This directory contains solutions to array-related problems from LeetCode. Each 
 |----------------------------------------|---------------------|-------------------|--------------------|---------------------|
 | 1480. Running Sum of 1d Array          | ✅                  | O(n)              | O(n)               | Typescript          |
 | 49. Group anagrams                     | ✅                  | O(n)              | O(n)               | Typescript          |
+| 2559. Count Vowel Strings in Ranges    | ✅                  | O(n)              | O(n)               | Typescript          |
