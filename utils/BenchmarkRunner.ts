@@ -11,7 +11,7 @@ export class BenchmarkRunner {
   run(cases: any[][]): void {
     cases.forEach((args, index) => {
       console.log(`\nRunning Use Case ${index + 1}`);
-      this.execute(...args); // Benchmark decorates this
+      this.execute(...args);
     });
   }
 }
