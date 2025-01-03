@@ -4,39 +4,25 @@ export default function vowelStrings(
 ): number[] {
   const prefixSum = createPrefixSum(words);
 
-  return queries.reduce((acc, cur) => {
-    const [startIndex, endIndex] = cur;
-    const arrayInRange = prefixSum.slice(startIndex, endIndex + 1);
-    const wordsWithVowelsInRange = startIndex
-      ? arrayInRange[arrayInRange.length - 1] - arrayInRange[0]
-      : arrayInRange[endIndex];
-
-    acc.push(wordsWithVowelsInRange);
-
-    return acc;
-  }, [] as number[]);
-}
-
-function matchVowelsAtStartAndEnd(word: string): boolean {
-  const regexForMultiChars = /^[AaEeIiOoUu](?:\w+)[AaEeIiOoUu]$/s;
-  const regexForAMaxOfTwoChars = /^[AaEeIiOoUu][AaEeIiOoUu]?$/s;
-
-  return (word.length <= 2 ? regexForAMaxOfTwoChars : regexForMultiChars).test(
-    word
+  return queries.map(([startIndex, endIndex]) =>
+    startIndex > 0
+      ? prefixSum[endIndex] - prefixSum[startIndex - 1]
+      : prefixSum[endIndex]
   );
 }
 
 function createPrefixSum(words: string[]): number[] {
-  return words.reduce((acc, cur, index) => {
-    if (index === 0) {
-      acc.push(matchVowelsAtStartAndEnd(cur) ? 1 : 0);
-    } else {
-      const previousValue = acc[acc.length - 1];
-      acc.push(
-        matchVowelsAtStartAndEnd(cur) ? previousValue + 1 : previousValue
-      );
-    }
+  const vowels = new Set(["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"]);
+  let currentSum = 0;
 
-    return acc;
-  }, [] as number[]);
+  return words.map((word) => {
+    if (
+      word.length > 0 &&
+      vowels.has(word[0]) &&
+      vowels.has(word[word.length - 1])
+    ) {
+      currentSum += 1;
+    }
+    return currentSum;
+  });
 }
